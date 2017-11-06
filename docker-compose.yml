@@ -1,0 +1,68 @@
+# 网关环境
+version: '2'
+services:
+  springboot-model-service:
+    image: 10.2.23.3/wxyx_dev/springboot-model-service
+    networks:
+    -  springboot-model-network
+    ports:
+    - 8090:8090/tcp
+    volumes:
+    - /var/run/dce-metadata:/var/run/dce-metadata
+    environment:
+    - MY_PORT=8090
+    mem_limit: 2273741824
+    cpu_quota: 200000
+  mysqldb:
+    image: 10.2.23.3/wxyx_dev/mysqldb
+    environment:
+    - MYSQL_DATABASE=db_springboot_model
+    - MYSQL_ROOT_PASSWORD=123456
+    volumes:
+    - db_springboot_model:/var/lib/mysql
+    networks:
+    - springboot-model-network
+    ports:
+    - 8091:3306/tcp
+    mem_limit: 2273741824
+    cpu_quota: 200000
+networks:
+  springboot-model-network:
+    external: true
+volumes:
+  db_springboot_model: {}
+
+
+  # 本地环境
+ version: '2'
+ services:
+   springboot-model-service:
+     image: 10.2.23.3/wxyx_dev/springboot-model-service
+     networks:
+     -  springboot-model-network
+     ports:
+     - 8090:8090/tcp
+#     volumes:
+#     - /var/run/dce-metadata:/var/run/dce-metadata
+#     environment:
+#     - MY_PORT=8090
+     mem_limit: 2273741824
+     cpu_quota: 200000
+   mysqldb:
+     image: 10.2.23.3/wxyx_dev/mysqldb
+     environment:
+     - MYSQL_DATABASE=db_springboot_model
+     - MYSQL_ROOT_PASSWORD=123456
+     volumes:
+     - db_springboot_model:/var/lib/mysql
+     networks:
+     - springboot-model-network
+     ports:
+     - 8091:3306/tcp
+     mem_limit: 2273741824
+     cpu_quota: 200000
+ networks:
+   springboot-model-network:
+     external: true
+ volumes:
+   db_springboot_model: {}
