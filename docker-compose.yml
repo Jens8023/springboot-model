@@ -10,12 +10,14 @@ services:
     volumes:
     - /var/run/dce-metadata:/var/run/dce-metadata
     environment:
+    - TZ=Asia/Shanghai
     - MY_PORT=8090
     mem_limit: 2273741824
     cpu_quota: 200000
   mysqldb:
     image: 10.2.23.3/wxyx_dev/mysqldb
     environment:
+    - TZ=Asia/Shanghai
     - MYSQL_DATABASE=db_springboot_model
     - MYSQL_ROOT_PASSWORD=123456
     volumes:
@@ -44,13 +46,14 @@ volumes:
      - 8090:8090/tcp
 #     volumes:
 #     - /var/run/dce-metadata:/var/run/dce-metadata
-#     environment:
-#     - MY_PORT=8090
+     environment:
+     - TZ=Asia/Shanghai
      mem_limit: 2273741824
      cpu_quota: 200000
    mysqldb:
      image: 10.2.23.3/wxyx_dev/mysqldb
      environment:
+     - TZ=Asia/Shanghai
      - MYSQL_DATABASE=db_springboot_model
      - MYSQL_ROOT_PASSWORD=123456
      volumes:

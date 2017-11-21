@@ -51,7 +51,7 @@
 		</javaClientGenerator>
 
 		<!-- 配置表信息，这里没生成一张表，这里需要改变一次对应表名 -->
-		<table tableName="vehicle_status_info"
+		<table tableName="springboot_user"
 			   enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
